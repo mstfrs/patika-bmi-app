@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Calcualator from "../pages/Calcualator";
+import Calculator from "../pages/Calculator";
 import Main from "../pages/Main";
 import Navbar from "../components/Navbar";
 
@@ -10,7 +10,7 @@ const BmiRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/calculate" element={<Calcualator />} />
+        <Route path="/calculate" element={<Calculator />} />
       </Routes>
     </Router>
   );

@@ -14,7 +14,6 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
-const pages = ["What's BMI?", "Calculate BMI", "About"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
