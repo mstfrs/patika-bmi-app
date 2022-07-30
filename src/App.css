@@ -5,6 +5,7 @@
 }
 TextField {
   color: rgb(32, 171, 69);
+  width: 200px;
 }
 /* .container {
   width: 100vh;
