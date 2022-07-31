@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import bmiData from "../data/bmiData";
 
 const Calculator = () => {
@@ -27,6 +27,7 @@ const Calculator = () => {
   const [height, setHeight] = useState("");
   const [result, setResult] = useState("");
   const [bmiType, setBmiType] = useState("");
+  const [diet, setDiet] = useState({});
 
   function handleChangeName(e) {
     setName(e.target.value);
@@ -37,6 +38,20 @@ const Calculator = () => {
   function handleChangeHeight(e) {
     setHeight(e.target.value);
   }
+  useEffect(() => {
+    if (result < 18.5) {
+      setBmiType("Underweight");
+    } else if (result >= 18.5 && result < 24.9) {
+      setBmiType("Healthy");
+    } else if (result >= 25 && result < 29.9) {
+      setBmiType("Overweight");
+    } else if (result >= 30) {
+      setBmiType("Obesity");
+    }
+    bmiData.map((data) => {
+      data.bmiType === bmiType ? setDiet(data.diet) : setDiet({});
+    });
+  }, [result, bmiType]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -45,24 +60,9 @@ const Calculator = () => {
     const heightSquare = (height / 100) * (height / 100);
     const bmiResult = (weight / heightSquare).toFixed(1);
     console.log(bmiResult);
-    setResult(bmiResult);
+    setResult(parseFloat(bmiResult));
+
     // console.log(bmiResult);
-
-    if (result < 18.5) {
-      setBmiType("Underweight");
-    } else if (result >= 18.5 && result < 24.9) {
-      setBmiType("Healty");
-    } else if (result >= 25 && result < 29.9) {
-      setBmiType("Overweight");
-    } else if (result >= 30) {
-      setBmiType("Obesity");
-    }
-
-    // {
-    //   bmiData.map((data) => {
-    //     data;
-    //   });
-    // }
   }
 
   return (
@@ -146,8 +146,7 @@ const Calculator = () => {
               {bmiType}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {diet.breakfast}
             </Typography>
           </CardContent>
           <CardActions>

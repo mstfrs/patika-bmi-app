@@ -13,7 +13,7 @@ const bmiResults = [
     },
   },
   {
-    bmiType: `Healthy!`,
+    bmiType: `Healthy`,
     bmiDesc: "Congratulations! Maintain a well-balanced and consistent diet.",
     bgColor: "green",
     color: "white",
