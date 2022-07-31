@@ -22,41 +22,40 @@ const Calculator = () => {
     result: "",
     bmiType: "",
   });
-  const [name, setName] = useState("");
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
-  const [result, setResult] = useState("");
-  const [bmiType, setBmiType] = useState("");
 
   function handleChangeName(e) {
-    setName(e.target.value);
+    setUser({ ...user, name: e.target.value });
   }
   function handleChangeWeight(e) {
-    setWeight(e.target.value);
+    setUser({ ...user, weight: e.target.value });
   }
   function handleChangeHeight(e) {
-    setHeight(e.target.value);
+    setUser({ ...user, height: e.target.value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    setBmiType("");
 
-    const heightSquare = (height / 100) * (height / 100);
-    const bmiResult = (weight / heightSquare).toFixed(1);
+    const heightSquare = (user.height / 100) * (user.height / 100);
+    const bmiResult = (user.weight / heightSquare).toFixed(1);
     console.log(bmiResult);
-    setResult(bmiResult);
+    setUser({
+      ...user,
+      result: bmiResult,
+    });
     // console.log(bmiResult);
 
-    if (result < 18.5) {
-      setBmiType("Underweight");
-    } else if (result >= 18.5 && result < 24.9) {
-      setBmiType("Healty");
-    } else if (result >= 25 && result < 29.9) {
-      setBmiType("Overweight");
-    } else if (result >= 30) {
-      setBmiType("Obesity");
+    if (user.result < 18.5) {
+      setUser({ ...user, bmiType: "Underweight" });
+    } else if (user.result >= 18.5 && user.result < 24.9) {
+      setUser({ ...user, bmiType: "Healty" });
+    } else if (user.result >= 25 && user.result < 29.9) {
+      setUser({ ...user, bmiType: "Overweight" });
+    } else if (user.result >= 30) {
+      setUser({ ...user, bmiType: "Obesity" });
     }
+
+    console.log(user);
 
     // {
     //   bmiData.map((data) => {
@@ -142,8 +141,8 @@ const Calculator = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {result}
-              {bmiType}
+              {user.result}
+              {user.bmiType}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Lizards are a widespread group of squamate reptiles, with over
