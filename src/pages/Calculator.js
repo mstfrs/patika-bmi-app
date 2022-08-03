@@ -49,7 +49,7 @@ const Calculator = () => {
     setHeight(e.target.value);
   }
   useEffect(() => {
-    if (result < 18.5) {
+    if (result < 18.5 && result >0 ) {
       setBmiType("Underweight");
     } else if (result >= 18.5 && result < 24.9) {
       setBmiType("Healthy");
@@ -57,15 +57,19 @@ const Calculator = () => {
       setBmiType("Overweight");
     } else if (result >= 30) {
       setBmiType("Obesity");
+    }else  {
+      setBmiType("");
     }
+    
     bmiData.map((data) => {
       if (data.bmiType === bmiType) {
         setDiet(data.diet);
       }
       // data.bmiType === bmiType ?  : setDiet([]);
+      
     });
     console.log(diet);
-  }, [result, bmiType]);
+  }, [result, bmiType,diet]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -75,17 +79,22 @@ const Calculator = () => {
     const bmiResult = (weight / heightSquare).toFixed(1);
     console.log(bmiResult);
     setResult(parseFloat(bmiResult));
+    
 
     // console.log(bmiResult);
   }
 
+  
+  
+
   return (
-    <div style={{ width: "100vh", paddingBottom: "5rem" }}>
+    <div className="container" >
+      <div>
       <Container
         // maxWidth="100%"
         style={{
           height: "40vh",
-          width: "40rem",
+          width: "20rem",
           padding: "20px",
           backgroundColor: "white",
           marginTop: "50px",
@@ -93,11 +102,11 @@ const Calculator = () => {
           justifyContent: "space-between",
         }}
       >
-        <div>
+        
           <form onSubmit={handleSubmit}>
             <TextField
               label="Your Name"
-              id="outlined-start-adornment"
+              className="outlined-start-adornment"
               // className={clsx(classes.margin, classes.textField)}
 
               variant="outlined"
@@ -108,7 +117,7 @@ const Calculator = () => {
             <br />
             <TextField
               label="Your Weight"
-              id="outlined-start-adornment"
+              className="outlined-start-adornment"
               // className={clsx(classes.margin, classes.textField)}
               InputProps={{
                 startAdornment: (
@@ -123,7 +132,7 @@ const Calculator = () => {
             <br />
             <TextField
               label="Your Height"
-              id="outlined-start-adornment"
+              className="outlined-start-adornment"
               // className={clsx(classes.margin, classes.textField)}
               InputProps={{
                 startAdornment: (
@@ -149,7 +158,9 @@ const Calculator = () => {
 
             {/* <input type="submit" value="Submit" /> */}
           </form>
-        </div>
+          </Container>
+          </div>
+       
         {/* <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
@@ -172,15 +183,21 @@ const Calculator = () => {
           </CardActions>
         </Card> */}
         <div>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h3" component="div">
             {result}
+            <br/>
             {bmiType}
+            <br/>
           </Typography>
+          </div>
+
+          {bmiType=="" ? null:
+          <div>
 
           <List
             sx={{
               width: "100%",
-              maxWidth: 360,
+             
               bgcolor: "background.paper",
               display: "flex",
             }}
@@ -248,8 +265,8 @@ const Calculator = () => {
               />
             </ListItem>
           </List>
-        </div>
-      </Container>
+        </div>}
+      
     </div>
   );
 };
