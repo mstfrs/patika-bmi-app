@@ -7,35 +7,34 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  //   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  //   const handleOpenUserMenu = (event) => {
+  //     setAnchorElUser(event.currentTarget);
+  //   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  //   const handleCloseUserMenu = () => {
+  //     setAnchorElUser(null);
+  //   };
 
   return (
     <AppBar position="static">
@@ -133,7 +132,8 @@ const ResponsiveAppBar = () => {
             <Button
               key="What's BMI"
               onClick={() => {
-                return handleCloseNavMenu, navigate("/");
+                return handleCloseNavMenu;
+                navigate("/");
               }}
               sx={{ my: 2, color: "white", display: "block" }}
             >
@@ -142,7 +142,8 @@ const ResponsiveAppBar = () => {
             <Button
               key="Calculate BMI"
               onClick={() => {
-                return handleCloseNavMenu, navigate("/calculate");
+                return handleCloseNavMenu;
+                navigate("/calculate");
               }}
               sx={{ my: 2, color: "white", display: "block" }}
             >

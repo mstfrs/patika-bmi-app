@@ -186,7 +186,7 @@ const Calculator = () => {
         </Typography>
       </div>
 
-      {bmiType == "" ? null : (
+      {bmiType === "" ? null : (
         <div>
           <List
             sx={{
