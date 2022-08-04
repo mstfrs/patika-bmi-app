@@ -6,14 +6,9 @@ import {
   List,
   ListItemText,
   ListItemAvatar,
-  Card,
-  Avatar,
   Divider,
   ListItem,
-  CardMedia,
-  CardContent,
   Typography,
-  CardActions,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -25,13 +20,6 @@ import lunch from "../static/avatar/lunch.PNG";
 import dinner from "../static/avatar/dinner.PNG";
 
 const Calculator = () => {
-  const [user, setUser] = useState({
-    name: "",
-    weight: "",
-    height: "",
-    result: "",
-    bmiType: "",
-  });
   const [name, setName] = useState("");
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
