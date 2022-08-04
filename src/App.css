@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: rgb(54, 54, 53);
-  color: rgb(250, 67, 11);
+  color: rgb(58, 56, 55);
 }
 TextField {
   color: rgb(32, 171, 69);
@@ -12,8 +12,8 @@ img {
   width: 3rem;
 }
 
-.container{
-  width: 100vh; 
+.container {
+  width: 100vh;
   height: 40rem;
   padding-bottom: 5rem;
   display: flex;
@@ -21,8 +21,6 @@ img {
   justify-content: space-between;
   align-items: center;
   margin: 3rem auto;
-  
-
 }
 /* .container {
   width: 100vh;

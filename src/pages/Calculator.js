@@ -49,7 +49,7 @@ const Calculator = () => {
     setHeight(e.target.value);
   }
   useEffect(() => {
-    if (result < 18.5 && result >0 ) {
+    if (result < 18.5 && result > 0) {
       setBmiType("Underweight");
     } else if (result >= 18.5 && result < 24.9) {
       setBmiType("Healthy");
@@ -57,19 +57,18 @@ const Calculator = () => {
       setBmiType("Overweight");
     } else if (result >= 30) {
       setBmiType("Obesity");
-    }else  {
+    } else {
       setBmiType("");
     }
-    
+
     bmiData.map((data) => {
       if (data.bmiType === bmiType) {
         setDiet(data.diet);
       }
       // data.bmiType === bmiType ?  : setDiet([]);
-      
     });
     console.log(diet);
-  }, [result, bmiType,diet]);
+  }, [result, bmiType, diet]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -79,30 +78,28 @@ const Calculator = () => {
     const bmiResult = (weight / heightSquare).toFixed(1);
     console.log(bmiResult);
     setResult(parseFloat(bmiResult));
-    
+    localStorage.setItem("name", name);
+    localStorage.setItem("weight", weight);
+    localStorage.setItem("height", height);
 
     // console.log(bmiResult);
   }
 
-  
-  
-
   return (
-    <div className="container" >
+    <div className="container">
       <div>
-      <Container
-        // maxWidth="100%"
-        style={{
-          height: "40vh",
-          width: "20rem",
-          padding: "20px",
-          backgroundColor: "white",
-          marginTop: "50px",
+        <Container
+          // maxWidth="100%"
+          style={{
+            height: "40vh",
+            width: "20rem",
+            padding: "20px",
+            backgroundColor: "white",
+            marginTop: "50px",
 
-          justifyContent: "space-between",
-        }}
-      >
-        
+            justifyContent: "space-between",
+          }}
+        >
           <form onSubmit={handleSubmit}>
             <TextField
               label="Your Name"
@@ -158,10 +155,13 @@ const Calculator = () => {
 
             {/* <input type="submit" value="Submit" /> */}
           </form>
-          </Container>
-          </div>
-       
-        {/* <Card sx={{ maxWidth: 345 }}>
+        </Container>
+      </div>
+      <br />
+      <br />
+      <br />
+
+      {/* <Card sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             height="140"
@@ -182,22 +182,28 @@ const Calculator = () => {
             <Button size="small">Learn More</Button>
           </CardActions>
         </Card> */}
+      <div>
+        <Typography
+          sx={{
+            color: "white",
+          }}
+          gutterBottom
+          variant="h3"
+          component="div"
+        >
+          {result}
+          <br />
+          {bmiType}
+          <br />
+        </Typography>
+      </div>
+
+      {bmiType == "" ? null : (
         <div>
-          <Typography gutterBottom variant="h3" component="div">
-            {result}
-            <br/>
-            {bmiType}
-            <br/>
-          </Typography>
-          </div>
-
-          {bmiType=="" ? null:
-          <div>
-
           <List
             sx={{
               width: "100%",
-             
+
               bgcolor: "background.paper",
               display: "flex",
             }}
@@ -265,8 +271,8 @@ const Calculator = () => {
               />
             </ListItem>
           </List>
-        </div>}
-      
+        </div>
+      )}
     </div>
   );
 };
